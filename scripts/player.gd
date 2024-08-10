@@ -100,8 +100,8 @@ func enemy_attack():
 		health -= 20
 		enemy_attack_coldown = false
 		$EnemyAttackColdown.start()
-
-
+		$PlayerHitBox/HittedSound.play()
+		
 func attack():
 	# Verifique se o ataque está em progresso
 	if attack_in_progress:

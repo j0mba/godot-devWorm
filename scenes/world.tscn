@@ -253,6 +253,9 @@ layer_2/tile_data = PackedInt32Array(65539, 327691, 0, 131077, 327691, 0, 327688
 y_sort_enabled = false
 position = Vector2(168, 123)
 
+[node name="SpawnTimer" type="Timer" parent="TileMap"]
+autostart = true
+
 [node name="Collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
@@ -265,9 +268,6 @@ position = Vector2(181, -24)
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_c5la3")
 
-[node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
-
+[connection signal="timeout" from="TileMap/SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_entered"]
 [connection signal="body_exited" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_exited"]
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

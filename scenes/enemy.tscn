@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://c3qnwh6ijiv0w"]
+[gd_scene load_steps=43 format=3 uid="uid://c3qnwh6ijiv0w"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_85c4n"]
 [ext_resource type="Texture2D" uid="uid://cequiip62kqad" path="res://sprites/characters/slime.png" id="1_hhgfu"]
+[ext_resource type="AudioStream" uid="uid://cx2ic5lpyku58" path="res://sprites/sounds/slime-squish.wav" id="3_g32y5"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h0cae"]
 atlas = ExtResource("1_hhgfu")
@@ -318,6 +319,9 @@ shape = SubResource("CircleShape2D_fslvi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitBox"]
 shape = SubResource("CircleShape2D_rf6lf")
+
+[node name="HittedSound" type="AudioStreamPlayer" parent="EnemyHitBox"]
+stream = ExtResource("3_g32y5")
 
 [node name="TakeDamageColdown" type="Timer" parent="."]
 wait_time = 0.659

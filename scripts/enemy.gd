@@ -50,6 +50,7 @@ func _on_enemy_hit_box_body_exited(body):
 func deal_with_damage():
 	if player_in_attack_zone and global.player_current_attack == true:
 		if can_take_damage:
+			$EnemyHitBox/HittedSound.play()
 			$TakeDamageColdown.start()
 			can_take_damage = false
 			health -= 20

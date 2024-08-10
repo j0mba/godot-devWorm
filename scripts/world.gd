@@ -6,6 +6,7 @@ var EnemyScene = preload("res://scenes/enemy.tscn")
 # Limite de inimigos na cena
 var max_enemies = 3
 var current_enemies = 0
+@onready var spawn_timer = $TileMap/SpawnTimer
 
 # Limites da área de spawn
 var spawn_area_min = Vector2(50, 50)  # Ponto mínimo da área de spawn
@@ -13,8 +14,7 @@ var spawn_area_max = Vector2(351, 222)  # Ponto máximo da área de spawn
 
 func _ready():
 	# Configurar o Timer para o spawn de inimigos
-	$SpawnTimer.start()
-
+	spawn_timer.start()
 func _process(delta):
 	change_scene()
 
@@ -42,9 +42,9 @@ func spawn_enemy(min_pos, max_pos):
 
 	# Verifica se o número de inimigos atingiu o máximo
 	if current_enemies >= max_enemies:
-		$SpawnTimer.stop()
+		spawn_timer.stop()
 	else:
-		$SpawnTimer.start()
+		spawn_timer.start()
 
 
 func _on_enemy_exited():
@@ -53,7 +53,7 @@ func _on_enemy_exited():
 	
 	# Reinicia o Timer se o número de inimigos for menor que o máximo
 	if current_enemies < max_enemies:
-		$SpawnTimer.start()
+		spawn_timer.start()
 
 func _on_cliff_side_transition_body_entered(body):
 	if body.has_method("player"):

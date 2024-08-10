@@ -1,7 +1,8 @@
-[gd_scene load_steps=57 format=3 uid="uid://c6pkwykb1u1ws"]
+[gd_scene load_steps=58 format=3 uid="uid://c6pkwykb1u1ws"]
 
 [ext_resource type="Texture2D" uid="uid://b1twcfgia62s2" path="res://sprites/characters/player.png" id="1_bgx73"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_etqon"]
+[ext_resource type="AudioStream" uid="uid://n7yoydsmylit" path="res://sprites/sounds/lucas-hit.wav" id="3_ms5uv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ouiqg"]
 atlas = ExtResource("1_bgx73")
@@ -441,6 +442,9 @@ shape = SubResource("CircleShape2D_21bc2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_7fraj")
+
+[node name="HittedSound" type="AudioStreamPlayer" parent="PlayerHitBox"]
+stream = ExtResource("3_ms5uv")
 
 [node name="EnemyAttackColdown" type="Timer" parent="."]
 process_callback = 0
