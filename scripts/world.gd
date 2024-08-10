@@ -66,8 +66,11 @@ func _on_cliff_side_transition_body_exited(body):
 func change_scene():
 	if global.transition_scene:
 		if global.current_scene == "world":
+			global.transition_scene = false
 			get_tree().change_scene_to_file("res://scenes/cliff_side.tscn")
 			global.finish_change_scene()
+
+
 
 func _on_spawn_timer_timeout():
 	if current_enemies < max_enemies:

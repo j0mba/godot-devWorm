@@ -266,6 +266,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_c5la3")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="body_entered" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_entered"]
 [connection signal="body_exited" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_exited"]
