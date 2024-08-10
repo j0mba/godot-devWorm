@@ -414,10 +414,9 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_21bc2"]
-radius = 4.12311
+radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fraj"]
-radius = 9.0
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
@@ -429,16 +428,18 @@ script = ExtResource("1_etqon")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, -13)
 sprite_frames = SubResource("SpriteFrames_3rjyj")
-animation = &"death"
-frame_progress = 0.950423
+animation = &"front_attack"
+frame = 1
+frame_progress = 0.463573
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_21bc2")
 
 [node name="PlayerHitBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitBox"]
-position = Vector2(-1, -2)
+position = Vector2(-1, -5)
 shape = SubResource("CircleShape2D_7fraj")
 
 [node name="EnemyAttackColdown" type="Timer" parent="."]
