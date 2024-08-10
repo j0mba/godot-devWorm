@@ -427,7 +427,7 @@ collision_layer = 3
 script = ExtResource("1_etqon")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1, -11)
+position = Vector2(-2, -13)
 sprite_frames = SubResource("SpriteFrames_3rjyj")
 animation = &"side_attack"
 frame_progress = 0.615722
@@ -442,7 +442,7 @@ position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_7fraj")
 
 [node name="AttackColdown" type="Timer" parent="."]
-wait_time = 0.504
+wait_time = 1.51
 
 [node name="DealAttackTimer" type="Timer" parent="."]
 wait_time = 0.578
@@ -459,15 +459,30 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="CliffSideCamera" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+position = Vector2(145, -91)
+zoom = Vector2(3, 3)
 limit_left = 0
 limit_top = 0
-limit_right = 351
-limit_bottom = 222
+limit_right = 150
+limit_bottom = -246
 limit_smoothed = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(0.180392, 0.882353, 0.254902, 1)
+offset_left = -7.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 33.0
+scale = Vector2(0.1, 0.1)
+show_percentage = false
+
+[node name="RegenTimer" type="Timer" parent="."]
+process_callback = 0
+autostart = true
 
 [connection signal="body_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="PlayerHitBox" to="." method="_on_player_hit_box_body_exited"]
 [connection signal="body_shape_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_shape_entered"]
 [connection signal="timeout" from="AttackColdown" to="." method="_on_attack_coldown_timeout"]
 [connection signal="timeout" from="DealAttackTimer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

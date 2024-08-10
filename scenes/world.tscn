@@ -231,7 +231,7 @@ sources/10 = SubResource("TileSetAtlasSource_nog5w")
 sources/11 = SubResource("TileSetAtlasSource_gy48l")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c5la3"]
-size = Vector2(44, 46)
+size = Vector2(44, 45)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_ef30a")
@@ -271,7 +271,7 @@ polygon = PackedVector2Array(-54, 0, 159, 0, 159, -46, 204, -46, 204, 0, 242, 0,
 position = Vector2(181, -24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CliffSideTransition"]
-position = Vector2(0, 1)
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_c5la3")
 
 [connection signal="body_entered" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_entered"]

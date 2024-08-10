@@ -320,7 +320,15 @@ shape = SubResource("CircleShape2D_fslvi")
 shape = SubResource("CircleShape2D_rf6lf")
 
 [node name="TakeDamageColdown" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.658
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0.19, 0.19, 1)
+offset_left = -5.0
+offset_top = 7.0
+offset_right = 6.0
+offset_bottom = 11.0
+show_percentage = false
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]

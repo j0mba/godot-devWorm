@@ -49,6 +49,7 @@ func deal_with_damage():
 			$TakeDamageColdown.start()
 			can_take_damage = false
 			health -= 20
+			$HealthBar.value = health
 			if health <= 0:
 				self.queue_free()
 
