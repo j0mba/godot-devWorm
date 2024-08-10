@@ -430,7 +430,7 @@ script = ExtResource("1_etqon")
 position = Vector2(-2, -13)
 sprite_frames = SubResource("SpriteFrames_3rjyj")
 animation = &"death"
-frame_progress = 0.680231
+frame_progress = 0.950423
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_21bc2")
@@ -441,8 +441,7 @@ shape = SubResource("CircleShape2D_21bc2")
 position = Vector2(-1, -2)
 shape = SubResource("CircleShape2D_7fraj")
 
-[node name="AttackColdown" type="Timer" parent="."]
-wait_time = 0.504
+[node name="EnemyAttackColdown" type="Timer" parent="."]
 
 [node name="DealAttackTimer" type="Timer" parent="."]
 wait_time = 0.578
@@ -485,7 +484,8 @@ autostart = true
 [connection signal="body_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_entered"]
 [connection signal="body_exited" from="PlayerHitBox" to="." method="_on_player_hit_box_body_exited"]
 [connection signal="body_shape_entered" from="PlayerHitBox" to="." method="_on_player_hit_box_body_shape_entered"]
-[connection signal="timeout" from="AttackColdown" to="." method="_on_attack_coldown_timeout"]
+[connection signal="timeout" from="EnemyAttackColdown" to="." method="_on_enemy_attack_coldown_timeout"]
+[connection signal="timeout" from="EnemyAttackColdown" to="." method="_on_attack_coldown_timeout"]
 [connection signal="timeout" from="DealAttackTimer" to="." method="_on_deal_attack_timer_timeout"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
 [connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

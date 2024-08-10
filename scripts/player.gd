@@ -99,10 +99,8 @@ func enemy_attack():
 	if enemy_in_attack_range and enemy_attack_coldown == true:
 		health -= 20
 		enemy_attack_coldown = false
-		$AttackColdown.start()
+		$EnemyAttackColdown.start()
 
-func _on_attack_coldown_timeout():
-	enemy_attack_coldown = true
 
 func attack():
 	# Verifique se o ataque está em progresso
@@ -161,3 +159,8 @@ func _on_regen_timer_timeout():
 
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_enemy_attack_coldown_timeout():
+	enemy_attack_coldown = true
+

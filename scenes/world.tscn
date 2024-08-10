@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://1poh8f1r28o7"]
+[gd_scene load_steps=11 format=3 uid="uid://1poh8f1r28o7"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ef30a"]
 [ext_resource type="Texture2D" uid="uid://bthrqmm7w3hq8" path="res://sprites/tilesets/plains.png" id="1_o0hac"]
 [ext_resource type="Texture2D" uid="uid://be8hpvui74nh5" path="res://sprites/tilesets/grass.png" id="2_bvgu7"]
 [ext_resource type="Texture2D" uid="uid://b4l35wviwhmqd" path="res://sprites/objects/objects.png" id="3_xucgc"]
 [ext_resource type="PackedScene" uid="uid://c6pkwykb1u1ws" path="res://scenes/player.tscn" id="4_5bd11"]
-[ext_resource type="PackedScene" uid="uid://c3qnwh6ijiv0w" path="res://scenes/enemy.tscn" id="5_l2nm3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nog5w"]
 texture = ExtResource("2_bvgu7")
@@ -254,14 +253,6 @@ layer_2/tile_data = PackedInt32Array(65539, 327691, 0, 131077, 327691, 0, 327688
 y_sort_enabled = false
 position = Vector2(168, 123)
 
-[node name="Enemies" type="Node" parent="TileMap"]
-
-[node name="Enemy2" parent="TileMap/Enemies" instance=ExtResource("5_l2nm3")]
-position = Vector2(296, 88)
-
-[node name="Enemy" parent="TileMap/Enemies" instance=ExtResource("5_l2nm3")]
-position = Vector2(54, 58)
-
 [node name="Collisions" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions"]
@@ -274,5 +265,9 @@ position = Vector2(181, -24)
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_c5la3")
 
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.949
+
 [connection signal="body_entered" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_entered"]
 [connection signal="body_exited" from="CliffSideTransition" to="." method="_on_cliff_side_transition_body_exited"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

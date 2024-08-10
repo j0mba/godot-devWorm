@@ -302,7 +302,7 @@ script = ExtResource("1_85c4n")
 y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_fvip3")
 animation = &"death"
-frame_progress = 0.430588
+frame_progress = 0.458497
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 2
