@@ -3,7 +3,7 @@ extends CharacterBody2D
 var enemy_in_attack_range = false
 var enemy_attack_coldown = true
 var health = 100
-var player_alive = true
+var player_alive = true  # Variável de controle para a vida do jogador
 
 const SPEED = 100.0
 var current_dir = "down"
@@ -13,18 +13,18 @@ func _ready():
 	play_animation()
 
 func _physics_process(delta):
-	attack()
-	handle_input()
-	move_and_slide()
-	enemy_attack()
-	curent_camera()
-	update_health()
+	if player_alive:  # Verifica se o jogador está vivo antes de processar a lógica
+		attack()
+		handle_input()
+		move_and_slide()
+		enemy_attack()
+		curent_camera()
+		update_health()
 	
-	
-	if health <= 0:
+	if health <= 0 and player_alive:
 		player_alive = false
-		health = 0
-		self.queue_free()
+		$AnimatedSprite2D.play("death")
+		$DeathTimer.start()
 
 func handle_input():
 	velocity = Vector2.ZERO
@@ -43,8 +43,6 @@ func handle_input():
 	
 	update_direction()
 	play_animation()
-
-
 
 func update_direction():
 	if velocity.x > 0:
@@ -85,7 +83,6 @@ func play_animation():
 				anim.play("back_walk")
 			else:
 				anim.play("back_idle")
-
 
 func player():
 	pass
@@ -129,7 +126,6 @@ func attack():
 			$AnimatedSprite2D.play("back_attack")
 		
 		$DealAttackTimer.start()
-			
 
 func _on_deal_attack_timer_timeout():
 	$DealAttackTimer.stop()
@@ -154,7 +150,6 @@ func update_health():
 		healthBar.visible = false
 	else:
 		healthBar.visible = true
-		
 
 func _on_regen_timer_timeout():
 	if health < 100:
@@ -163,3 +158,6 @@ func _on_regen_timer_timeout():
 			health = 100
 	if health <= 0:
 		health = 0
+
+func _on_death_timer_timeout():
+	get_tree().reload_current_scene()
